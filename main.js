@@ -5,14 +5,11 @@ let getData =()=>{
    return fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=50&api_key=Wi41OWBvzKEWUcx1ss2apUDN1tg7f2v6Yxt8td3l')
   .then(response => response.json())
   .then(data =>  data.photos);
-    
-
 }
+
 
 let loader = (visibility)=>{
     document.getElementById("loader").style.display = visibility;
-//determines visibility
-
 }
 
 
@@ -28,7 +25,6 @@ let sortByDate=(a, b) => {
     let c = a.id > b.id ? -1 : 1 
     return c * sortOrder;
 }
-
 
 
 let createHtml =()=>{
@@ -65,9 +61,8 @@ let createHtml =()=>{
            loader("none");
 
         })
+    }
 }
-}
-
 
 
 (function(){
@@ -86,13 +81,12 @@ let refreshData =()=>{
     ApiData = null;
     document.getElementById("gallery").innerHTML = null;
     createHtml();
-
 }
+
 
 let sortData =()=>{
     sortOrder =- sortOrder;
    
     ApiData.sort(sortByDate);
     createHtml();
-
 }
